@@ -8,4 +8,4 @@ text = "Modi is PM of India"
 vector = embeddings.embed_query(text)
 
 print(len(vector))
-print(vector[:10]) 
+print(vector[:10])
