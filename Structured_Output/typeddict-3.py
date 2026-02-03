@@ -2,8 +2,9 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from typing import TypedDict
 from dotenv import load_dotenv
 
+load_dotenv()
 
-llm = ChatGoogleGenerativeAI(model='gemini-2.0-flash')
+llm = ChatGoogleGenerativeAI(model='gemini-1.5-flash')
 
 
 class Review(TypedDict):
