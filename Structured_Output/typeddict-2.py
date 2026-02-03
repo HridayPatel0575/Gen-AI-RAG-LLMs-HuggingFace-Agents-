@@ -3,7 +3,7 @@ import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
 from langchain_huggingface import HuggingFacePipeline, ChatHuggingFace
 
-MODEL_ID = "Qwen/Qwen2.5-7B-Instruct"
+MODEL_ID = "meta-llama/Llama-3.2-3B-Instruct"
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL_ID)
 

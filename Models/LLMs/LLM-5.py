@@ -1,17 +1,19 @@
-from langchain_huggingface import ChatHuggingFace,HuggingFacePipeline
 import torch
+from transformers import pipeline
 
-
-llm = HuggingFacePipeline.from_model_id(
-    model_id="TinyLlama/TinyLlama-1.1B-Chat-v1.0",
-    task="text-generation",
-    # device_map="auto",
-    # torch_dtype="auto"
+model_id = "meta-llama/Llama-3.2-3B-Instruct"
+pipe = pipeline(
+    "text-generation",
+    model=model_id,
+    torch_dtype=torch.bfloat16,
+    device_map="auto",
 )
-
-model = ChatHuggingFace(llm=llm)
-
-result = model.invoke('Delhi is capital of India')
-
-print(result)
-
+messages = [
+    {"role": "system", "content": "You are a pirate chatbot who always responds in pirate speak!"},
+    {"role": "user", "content": "Who are you?"},
+]
+outputs = pipe(
+    messages,
+    max_new_tokens=256,
+)
+print(outputs[0]["generated_text"][-1])
