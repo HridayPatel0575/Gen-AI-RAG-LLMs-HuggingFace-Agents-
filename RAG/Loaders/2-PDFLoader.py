@@ -17,13 +17,13 @@ loader = PyPDFLoader(r"C:\Users\Admin\Downloads\SYNOPSIS.pdf")
 docs = loader.load()
 
 prompt = PromptTemplate(
-    template='Write summary for {text} in 5 lines',
+    template='what problem is solved here /n{text}',
     input_variables=['text']
     )
 
 chain = prompt | llm | parser
 
-response=chain.invoke({'text':docs[0].page_content})
+response=chain.invoke({'text':docs})
 
 print(response)
 
